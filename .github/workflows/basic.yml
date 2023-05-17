@@ -31,7 +31,7 @@ jobs:
 
           python train.py
 
-        - name: Test model
+      - name: Test model
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
