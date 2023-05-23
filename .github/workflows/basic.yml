@@ -30,8 +30,8 @@ jobs:
       - name: Test model
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: echo "steps.hello.outputs.net"  > cifar_net.pth
         run: |
+          echo "steps.hello.outputs.net"  > cifar_net.pth
           pip install pandas
           pip install numpy
           pip install torch
