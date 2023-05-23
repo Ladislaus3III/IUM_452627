@@ -23,12 +23,8 @@ jobs:
           pip install torchvision
           pip install GitPython
 
-          chmod +r ./Customers.csv
-          chmod +x ./zadanie1.py
-          chmod +x ./train.py
-          chmod +x ./test.py
-
-          python train.py 10
+          using: 'docker'
+          image: 'Dockerfile'
 
       - name: Test model
         env:
