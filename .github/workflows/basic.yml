@@ -31,7 +31,7 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "steps.hello.outputs.net"  > cifar_net.pth
+          echo "steps.hello.outputs.net"  > net.pth
           pip install pandas
           pip install numpy
           pip install torch
@@ -44,4 +44,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: test-output
-          path: cifar_net.pth
+          path: net.pth
