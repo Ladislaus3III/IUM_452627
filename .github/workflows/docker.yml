@@ -1,0 +1,11 @@
+name: 'Docker'
+inputs:
+  epochs:  # id of input
+    description: 'How many epochs'
+    required: true
+    default: '5'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.epochs }}

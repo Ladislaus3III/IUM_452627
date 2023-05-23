@@ -1,6 +1,12 @@
 name: Training and Testing
 
-on: [push]
+on: 
+    workflow_dispatch:
+        inputs:
+            input_text:
+                description: 'How many epochs'     
+                required: true
+                default: '5'
 
 jobs:
 
@@ -15,6 +21,14 @@ jobs:
 
       - name: Train model
         env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}     
+        id: hello
+        uses: ./
+        with:
+            epochs: "${{ github.event.inputs.input_text }}"
+
+      - name: Test model
+        env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           pip install pandas
@@ -23,11 +37,4 @@ jobs:
           pip install torchvision
           pip install GitPython
 
-          using: 'docker'
-          image: 'Dockerfile'
-
-      - name: Test model
-        env:
-          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
           python test.py
