@@ -40,7 +40,7 @@ jobs:
 
           python test.py
     
-     - name: Archive artifacts      
+      - name: Archive artifacts      
         uses: actions/upload-artifact@v3
         with:
           name: test-output
