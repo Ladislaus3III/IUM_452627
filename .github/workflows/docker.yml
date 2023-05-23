@@ -4,6 +4,9 @@ inputs:
     description: 'How many epochs'
     required: true
     default: '5'
+outputs:
+  net: # id of output
+    description: 'Net'
 runs:
   using: 'docker'
   image: 'Dockerfile'

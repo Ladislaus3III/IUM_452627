@@ -30,6 +30,7 @@ jobs:
       - name: Test model
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: echo "steps.hello.outputs.net"  > cifar_net.pth
         run: |
           pip install pandas
           pip install numpy
@@ -38,3 +39,9 @@ jobs:
           pip install GitPython
 
           python test.py
+    
+     - name: Archive artifacts      
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-output
+          path: cifar_net.pth
